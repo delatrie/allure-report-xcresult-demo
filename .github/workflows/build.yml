@@ -23,6 +23,7 @@ jobs:
         run: |
           xcrun xcresulttool version
           xcrun xcresulttool merge --output-path ./out/merged.xcresult ./test-results/macos.xcresult ./test-results/iphone.xcresult ./test-results/ipad.xcresult
+          mkdir -p allure-report
           npx allure log ./out/merged.xcresult > allure-report/report.log
           npx allure allure2 ./out/merged.xcresult --single-file -o allure-report
           npx allure awesome ./out/merged.xcresult --single-file -o allure-report
