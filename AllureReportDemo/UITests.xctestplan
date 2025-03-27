@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "5FBD56F1-9263-4D76-88F0-F95C39E7CB63",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AllureReportDemo.xcodeproj",
+        "identifier" : "001CB23C2D9552E00025651B",
+        "name" : "AllureReportDemoUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

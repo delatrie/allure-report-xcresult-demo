@@ -1,0 +1,54 @@
+{
+  "configurations" : [
+    {
+      "id" : "4003E98F-41E1-4504-B788-6958A40C22EE",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "ALLURE_DEMO_LOCALE",
+        "value" : "en_US"
+      },
+      {
+        "key" : "ALLURE_DEMO_PASSWORD",
+        "value" : "foobar"
+      },
+      {
+        "key" : "ALLURE_DEMO_N",
+        "value" : "10"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AllureReportDemo.xcodeproj",
+      "identifier" : "001CB2212D9552DF0025651B",
+      "name" : "AllureReportDemo"
+    },
+    "uiTestingScreenshotsLifetime" : "keepAlways",
+    "userAttachmentLifetime" : "keepAlways"
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "AllureReportDemoUITests"
+      ],
+      "target" : {
+        "containerPath" : "container:AllureReportDemo.xcodeproj",
+        "identifier" : "001CB23C2D9552E00025651B",
+        "name" : "AllureReportDemoUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AllureReportDemo.xcodeproj",
+        "identifier" : "001CB2322D9552E00025651B",
+        "name" : "AllureReportDemoTests"
+      }
+    }
+  ],
+  "version" : 1
+}

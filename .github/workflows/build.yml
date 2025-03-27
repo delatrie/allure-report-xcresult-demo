@@ -1,0 +1,47 @@
+name: Build Allure Report
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  generate-report:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate the reports
+        run: |
+          xcrun xcresulttool version
+          xcrun xcresulttool merge --output-path ./out/merged.xcresult ./test-results/macos.xcresult ./test-results/iphone.xcresult ./test-results/ipad.xcresult
+          npx allure log ./out/merged.xcresult > allure-report/report.log
+          npx allure allure2 ./out/merged.xcresult --single-file -o allure-report
+          npx allure awesome ./out/merged.xcresult --single-file -o allure-report
+      - name: Upload Allure Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-xcresult
+          path: allure-report/
+      - name: Upload Allure Report Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report/
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: [ generate-report ]
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
