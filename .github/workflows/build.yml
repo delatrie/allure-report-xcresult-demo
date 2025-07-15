@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -15,6 +18,8 @@ jobs:
   generate-report:
     runs-on: macos-latest
     steps:
+      - run: |
+          printenv
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
